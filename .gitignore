@@ -3,12 +3,21 @@
 **/db
 **/greybox_tmp
 **/incremental_db
-**/simulation/modelsim
 **/testbench
 **/timing
 **/output_files
+**/modelsim
 
 # ignore Quartus II generated files
+*.bmp
+*.ini
+*transcript
+*.xrf
+*.do
+*.sft
+*.vho
+*.opt
+*.wlf
 *_generation_script*
 *_inst.vhd
 *.bak
@@ -41,6 +50,3 @@ PLLJ_PLLSPE_INFO.txt # The generated PLL specification file
 
 # ignore vunit files
 **/vunit_out
-
-# do not ignore 'vht' files (testbench vhdl)
-!**/modelsim/*.vht
