@@ -9,6 +9,11 @@
 **/modelsim
 
 # ignore Quartus II generated files
+*.cdf
+*.sld
+*.htm
+*.qsf
+*.qdf
 *.bmp
 *.ini
 *transcript
