@@ -4,7 +4,7 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 --
--- @file find_errors.vhd
+-- @file HW3P3.vhd
 -- @brief Application Assignment 2-001 Example code with errors to be found
 -- @version: 1.0
 -- Date of current revision:  @date YYYY-MM-DD
@@ -41,13 +41,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity find_errors is port (
+entity HW3P3 is port (
     a: bit_vector(0 to 3);
     b: out std_logic_vector(3 downto 0);
     c: in bit_vector(3 downto 0));
-end find_errors;
+end HW3P3;
 
-architecture not_good of find_errors is
+architecture corrected_arch of HW3P3 is
   constant f : std_logic_vector(3 downto 0) := "0101";
   begin
   my_label: process(c,a)
@@ -58,5 +58,5 @@ architecture not_good of find_errors is
      b <= f;
     end if;
   end process;
-end not_good;
+end corrected_arch;
 
