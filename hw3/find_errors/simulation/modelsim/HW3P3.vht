@@ -4,7 +4,7 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 --
--- @file find_errors.vht
+-- @file HW3P3.vht
 -- @brief Application Assignment 2-001 Example code with errors to be found
 -- @version: 1.0
 -- Date of current revision:  @date 2019-09-29
@@ -39,10 +39,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity find_errors_tb is
-end entity find_errors_tb;
+entity HW3P3_tb is
+end entity HW3P3_tb;
 
-architecture find_errors_tb_arch of find_errors_tb is
+architecture HW3P3_tb_arch of HW3P3_tb is
     signal a: bit_vector(0 to 3) := "0000";
     signal b: std_logic_vector(3 downto 0) := "0000";
     signal c: bit_vector(3 downto 0) := "0000";
@@ -58,7 +58,7 @@ architecture find_errors_tb_arch of find_errors_tb is
     end component;
 
     begin -- architecture
-    uut : entity work.find_errors
+    uut : entity work.HW3P3
     port map (
         a => a,
         b => b,
@@ -115,4 +115,4 @@ architecture find_errors_tb_arch of find_errors_tb is
             end loop;
             wait;
     end process stim_process;
-end architecture find_errors_tb_arch;
+end architecture HW3P3_tb_arch;
