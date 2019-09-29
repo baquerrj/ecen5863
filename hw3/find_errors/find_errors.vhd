@@ -4,8 +4,7 @@
 --                                                                            --
 --------------------------------------------------------------------------------
 --
--- [Replace [items in brackets] with your content]
--- @file HW3P3.vhd
+-- @file find_errors.vhd
 -- @brief Application Assignment 2-001 Example code with errors to be found
 -- @version: 1.0
 -- Date of current revision:  @date YYYY-MM-DD
@@ -25,9 +24,9 @@
 --                [Address]
 --                [City, ST ZIP]
 --                [www.customer, phone number]
---  Designed by:  @author [your name]
---                [Organization]
---                [email]
+--  Designed by:  @author Roberto Baquerizo
+--                [CU Boulder]
+--                [roba8460@colorado.edu]
 --
 --      Copyright (c) 2018 by Tim Scherr
 --
@@ -39,24 +38,25 @@
 ------------------------------------------------------------------------------
 --
 
-library ieee;                                -- line 1
-use ieee.std_logic_1164.all;                 -- line 2
-                                             -- line 3
-entity find_errors is port (                      -- line 4
-    a: bit_vector(0 to 3);                   -- line 5
-    b: out std_logic_vector(3 downto 0);         -- line 6
-    c: in bit_vector(5 downto 0));         -- line 7
-end find_errors;                             -- line 8
-                                             -- line 9
-architecture not_good of find_errors is      -- line 10
-  begin                                      -- line 11
-  my_label: process(c,a)                          -- line 12
-    begin                                    -- line 13
-    if c = "111111" then                         -- line 14
-      b <= to_stdlogicvector(a);                                -- line 15
-    else                                     -- line 16
-     b <= "0101";                            -- line 17
-    end if;                                  -- line 18
-  end process;                               -- line 19
-end not_good;                                 -- line 20
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity find_errors is port (
+    a: bit_vector(0 to 3);
+    b: out std_logic_vector(3 downto 0);
+    c: in bit_vector(3 downto 0));
+end find_errors;
+
+architecture not_good of find_errors is
+  constant f : std_logic_vector(3 downto 0) := "0101";
+  begin
+  my_label: process(c,a)
+    begin
+    if c = x"F" then
+      b <= to_stdlogicvector(a);
+    else
+     b <= f;
+    end if;
+  end process;
+end not_good;
 
