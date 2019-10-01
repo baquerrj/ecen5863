@@ -42,15 +42,6 @@ architecture Majority_arch of Majority_tb is
 
 	constant period : time := 20 ns;
 
-	component Majority
-		port (
-		A : in std_logic;
-		B : in std_logic;
-		C : in std_logic;
-		Y : out std_logic
-		);
-	end component;
-
 	procedure post_and_wait (signal stim_done : inout boolean) is
 	begin
 		wait for period;
@@ -59,14 +50,6 @@ architecture Majority_arch of Majority_tb is
 	end procedure post_and_wait;
 
 	begin -- architecture
-	uut : entity work.Majority
-	port map (
-		A => A,
-		B => B,
-		C => C,
-		Y => Y
-	);
-
 	data_check : process
 	begin
 		wait until stim_done;
@@ -143,4 +126,11 @@ architecture Majority_arch of Majority_tb is
 			wait;
 	end process stim_process;
 
+	uut : entity work.Majority
+	port map (
+		A => A,
+		B => B,
+		C => C,
+		Y => Y
+	);
 end architecture Majority_arch;
