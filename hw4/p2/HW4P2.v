@@ -4,17 +4,17 @@
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 //
-// @file comparator.v
-// @brief 2-bit Comparator
+// @file HW4P2 .v
+// @brief 74LS163 4-Bit Binary Counter
 // @version: 1.0
 // Date of current revision:  @date 2019-09-30
-// Target FPGA: [Intel Altera MAX10]
+// Target FPGA: [Intel Altera Cyclone IV]
 // Tools used: [Quartus Prime 16.1] for editing && synthesis
 //             [Modeltech ModelSIM 10.4a Student Edition] for simulation
 //             [Quartus Prime 16.1]  for place && route if applied
 //
 //  Functional Description:  This file contains the Verilog which describes the
-//               FPGA implementation of a 2-bit comparator
+//               FPGA implementation of a 74LS163 4-Bit Binary Counter
 
 //  Hierarchy:  There is only one level in this simple design.
 //
@@ -26,13 +26,7 @@
 //                CU Boulder
 //                roba8460@colorado.edu
 //
-//      Copyright (c) 2019 by Tim Scherr
 //
-// Redistribution, modification or use of this software in source or binary
-// forms is permitted as long as the files maintain this copyright. Users are
-// permitted to modify this && use it to learn about the field of HDl code.
-// Tim Scherr && the University of Colorado are not liable for any misuse
-// of this material.
 //////////////////////////////////////////////////////////////////////////////
 //
 
@@ -55,24 +49,24 @@
    assign CE = CEP && CET && PE;
    assign TC = CET && (Q == 4'b1111);
 
-    always @ (posedge CP)
-    begin
+   always @ (posedge CP)
+   begin
       if (SR == 1'b0)
       begin
          // Synchronous reset
-         Q = 4'b0000;
+         Q <= 4'b0000;
       end
       else if (PE == 1'b0)
       begin
          // Set Q value to input P
          for(i=0; i<4; i=i+1)
          begin
-            Q[ i ] = P[ i ];
+            Q[ i ] <= P[ i ];
          end
       end
       else if (CE == 1'b1)
       begin
-         Q = Q + 1'd1;
+         Q <= Q + 1'd1;
       end
    end
 

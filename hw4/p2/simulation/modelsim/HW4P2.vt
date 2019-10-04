@@ -62,78 +62,78 @@ HW4P2 uut (
 
 initial begin
    $display("Initializing Testbench for HW4P2 Binary Counter");
-   CEP = 1'b0;
-   CET = 1'b0;
-   CP  = 1'b0;
-   P   = 4'h0;
-   PE  = 1'b1; // active low, so initializing it to 1 to prevent stuff from happening
-   SR  = 1'b1; // active low, so initializing it to 1 to prevent stuff from happening
+   CEP <= 1'b0;
+   CET <= 1'b0;
+   CP  <= 1'b0;
+   P   <= 4'h0;
+   PE  <= 1'b1; // active low, so initializing it to 1 to prevent stuff from happening
+   SR  <= 1'b1; // active low, so initializing it to 1 to prevent stuff from happening
 end
 
 // generate clock
 always begin
-   #5 CP = ~CP;
+   #5 CP <= ~CP;
 end
 
 always @ (iteration) begin
    if (iteration == 1)
    begin
-      CET = 1'b1;
-      CEP = 1'b1;
+      CET <= 1'b1;
+      CEP <= 1'b1;
    end
    else if (iteration == 5)
    begin
-      SR = 1'b0;  // counter to reset to 0
+      SR <= 1'b0;  // counter to reset to 0
    end
    else if (iteration == 10)
    begin
-      SR = 1'b1;  // counter should resume incrementing
+      SR <= 1'b1;  // counter should resume incrementing
    end
    else if (iteration == 30)
    begin
-      CET = 1'b0;
-      CEP = 1'b0; // counter should hold its value
-      hold = Q;
+      CET <= 1'b0;
+      CEP <= 1'b0; // counter should hold its value
+      hold <= Q;
    end
    else if (iteration == 35)
    begin
-      PE = 1'b0;
-      P  = 4'b1010;  // load 1010 into counter but do not increment
-      hold = P;
+      PE   <= 1'b0;
+      P    <= 4'b1010;  // load 1010 into counter but do not increment
+      hold <= 4'b1010;
    end
    else if (iteration == 40)
    begin
-      PE  = 1'b1;
-      CET = 1'b1;
-      CEP = 1'b1; // start incrementing from 1010
+      PE  <= 1'b1;
+      CET <= 1'b1;
+      CEP <= 1'b1; // start incrementing from 1010
    end
    else if (iteration == 60)
    begin
-      PE   = 1'b0;
-      P    = 4'b0110;  // load 0110 into counter but do not increment
-      hold = P;
+      PE   <= 1'b0;
+      P    <= 4'b0110;  // load 0110 into counter but do not increment
+      hold <= 4'b0110;
    end
    else if (iteration == 61)
    begin
-      PE = 1'b1;
+      PE <= 1'b1;
    end
 	else if (iteration == 70)
 	begin
-		PE   = 1'b0;
-		P	  = 4'b1110;
-		hold = P;
+		PE   <= 1'b0;
+		P	  <= 4'b1110;
+		hold <= 4'b1110;
 	end
 	else if (iteration == 75)
 	begin
-		PE = 1'b1;
+		PE <= 1'b1;
 	end
    else if (iteration == 85)
    begin
-      SR = 1'b0;
+      SR <= 1'b0;
    end
    else if (iteration == 86)
    begin
-      SR = 1'b1;
+      SR <= 1'b1;
    end
 end
 
@@ -161,7 +161,7 @@ end
 
 // main
 always @ (posedge CP) begin
-   iteration = iteration + 1;
+   iteration <= iteration + 1;
    if ( iteration == 100 )
    begin
       $display("Terminating simulation");
