@@ -26,7 +26,7 @@
 // 
 
 `timescale 1 ps/ 1 ps
-module HW4P1_vlg_tst;
+module HW4P1_tb;
 	// test vector input registers
 	reg [1:0] A;
 	reg [1:0] B;

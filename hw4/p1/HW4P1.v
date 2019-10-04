@@ -18,10 +18,6 @@
  
 //  Hierarchy:  There is only one level in this simple design.
 //  
-//  Designed for: [Customer] 
-//                [Address]
-//                [City, ST ZIP]
-//                [www.customer, phone number]
 //  Designed by:  @author Roberto Baquerizo
 //                CU Boulder
 //                roba8460@colorado.edu 
