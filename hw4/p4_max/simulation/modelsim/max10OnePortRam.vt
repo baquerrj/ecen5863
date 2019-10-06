@@ -1,0 +1,119 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions
+// and other software and tools, and its AMPP partner logic
+// functions, and any output files from any of the foregoing
+// (including device programming or simulation files), and any
+// associated documentation or information are expressly subject
+// to the terms and conditions of the Intel Program License
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other
+// applicable license agreement, including, without limitation,
+// that your use is for the sole purpose of programming logic
+// devices manufactured by Intel and sold by Intel or its
+// authorized distributors.  Please refer to the applicable
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to
+// suit user's needs .Comments are provided in each section to help the user
+// fill out necessary details.
+// *****************************************************************************
+// Generated on "10/05/2019 12:28:02"
+
+// Verilog Test Bench template for design : max10OnePortRam
+//
+// Simulation tool : ModelSim-Altera (Verilog)
+//
+
+`timescale 1 ns/ 1 ns
+module max10OnePortRam_tb();
+// test vector input registers
+reg [6:0] address;
+reg clock;
+reg [7:0] data;
+reg wren;
+// wires
+wire [7:0]  q;
+
+integer iteration = 0;
+integer w_done = 0;
+
+// generate clock
+always begin
+#5 clock <= ~clock;
+end
+
+// assign statements (if any)
+max10OnePortRam uut (
+// port map - connection between master ports and signals/registers
+	.address(address),
+	.clock(clock),
+	.data(data),
+	.q(q),
+	.wren(wren)
+);
+
+initial begin
+	$display("Running testbench");
+	address = 0;
+	data 	  = 0;
+	wren	  = 0;
+	clock	  = 0;
+end
+
+// write process
+always @ (iteration) begin
+	if (w_done == 1)
+	begin
+		wren <= 1'b0;
+		if ((iteration % 2) == 0)
+		begin
+			data   <= {1'b0, address};
+			address <= address - 1'b1;
+		end
+	end
+	else if (w_done == 0)
+	begin
+		wren <= 1'b1;
+		if ((iteration % 2) == 0)
+		begin
+			data   <= {1'b0, address};
+			address <= address + 1'b1;
+		end
+	end
+end
+
+// read process
+always @ (iteration) begin
+	if (w_done == 1'b1)
+	begin
+		if (wren == 1'b0)
+		begin
+			if (data != q)
+			begin
+				$display("data = %b and q = %b", data, q);
+			end
+		end
+	end
+end
+
+// main
+always @ (posedge clock) begin
+	if (iteration == 0)
+	begin
+		w_done <= 0;
+		$display("TESTBENCH INITIALIZED");
+	end
+	else if (iteration == 50)
+	begin
+		w_done <= 1;
+	end
+	else if (iteration == 100)
+	begin
+		$display("SIMULATION COMPLETED");
+		$finish;
+	end
+	iteration <= iteration + 1;
+end
+endmodule
+
