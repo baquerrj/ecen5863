@@ -6,9 +6,20 @@
 **/testbench
 **/timing
 **/output_files
-**/modelsim
+#**/modelsim
+**/gate_work
+**/rtl_work
+**/work
+
+!*.vht
+!*.vt
+!*.vho
+!*.vo
+!*.sof
 
 # ignore Quartus II generated files
+*.sdo
+*.qdb
 *.cdf
 *.sld
 *.htm
@@ -20,7 +31,7 @@
 *.xrf
 *.do
 *.sft
-*.vho
+#*.vho
 *.opt
 *.wlf
 *_generation_script*
@@ -43,7 +54,7 @@
 *.qws
 *.rpt
 *.smsg
-*.sof
+#*.sof
 *.sopc_builder
 *.summary
 *.tcl
