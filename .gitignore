@@ -66,3 +66,24 @@ PLLJ_PLLSPE_INFO.txt # The generated PLL specification file
 
 # ignore vunit files
 **/vunit_out
+
+# ignore eclipse files
+create-this-bsp
+*.x
+*.html
+*app
+*.map
+*.objdump
+*.elf
+*.o
+*.d
+.cproject
+.cpproject
+.project
+
+# ignore eclipse makefiles and build directories
+Makefile
+*.mk
+**/obj
+**/system
+
