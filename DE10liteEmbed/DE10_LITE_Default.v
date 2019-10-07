@@ -103,7 +103,7 @@ always@(posedge MAX10_CLK2_50)
     end
 
 
-//assign   LEDR         =   resrt_n? ( SW[0] ? led_gensor : {   Cont[25:24],Cont[25:24],Cont[25:24],Cont[25:24],Cont[25:24]   } ) :10'h3ff;
+//assign   LEDR        =  resrt_n? ( SW[0] ? led_gensor : {   Cont[25:24],Cont[25:24],Cont[25:24],Cont[25:24],Cont[25:24]   } ) :10'h3ff;
 assign   mSEG7_DIG   =  resrt_n? {   Cont[27:24],Cont[27:24],Cont[27:24],Cont[27:24],Cont[27:24],Cont[27:24] } :{6{4'b1000}};
 assign   DRAM_UDQM   =  DRAM_LDQM;
 
@@ -123,8 +123,8 @@ SEG7_LUT_6          u0   (   .oSEG0(HEX0),
 VGA_Audio_PLL       p1   (   .areset(~DLY_RST),
                         .inclk0(MAX10_CLK2_50),
                         .c0(VGA_CTRL_CLK),
-                        .c1(spi_clk), // 2MHz
-                        .c2(spi_clk_out),      // 2MHz phase shift
+                        .c1(spi_clk), 		// 2MHz
+                        .c2(spi_clk_out)  // 2MHz phase shift
                         );
 
 
@@ -178,7 +178,7 @@ VGA_OSD_RAM         u2   (   //   Read Out Side
 */
 wire [9:0] led_gensor;
 
-         //   LED
+//   LED
 led_driver u_led_driver   (
                   .iRSTN(DLY_RST),
                   .iCLK(MAX10_CLK1_50),
@@ -198,7 +198,7 @@ led_driver u_led_driver   (
       .dram_cke                            (DRAM_CKE),         //                             .cke
       .dram_cs_n                           (DRAM_CS_N),        //                             .cs_n
       .dram_dq                             (DRAM_DQ),          //                             .dq
-      .dram_dqm                            (DRAM_DQM),         //                             .dqm
+      .dram_dqm                            (DRAM_LDQM),         //                             .dqm
       .dram_ras_n                          (DRAM_RAS_N),       //                             .ras_n
       .dram_we_n                           (DRAM_WE_N),        //                             .we_n
       .dram_clk_clk                        (DRAM_CLK),         //                     dram_clk.clk
