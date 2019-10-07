@@ -105,7 +105,7 @@ always@(posedge MAX10_CLK2_50)
 
 //assign	LEDR      	=	resrt_n? ( SW[0] ? led_gensor : {	Cont[25:24],Cont[25:24],Cont[25:24],Cont[25:24],Cont[25:24]	} ) :10'h3ff;
 assign	mSEG7_DIG	=	resrt_n? {	Cont[27:24],Cont[27:24],Cont[27:24],Cont[27:24],Cont[27:24],Cont[27:24] } :{6{4'b1000}};
-
+assign 	DRAM_UDQM 	= DRAM_LDQM;
 
 Reset_Delay			r0	(	.iCLK(MAX10_CLK1_50),
 								.oRESET(DLY_RST)	);
