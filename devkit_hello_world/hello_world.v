@@ -36,7 +36,7 @@ module hello_world(
 
 	nios_setup_v2 u0 (
 		.clk_clk                           (MAX10_CLK1_50),   // clk.clk
-		.reset_reset_n                     (1'b1)),           // reset.reset_n
+		.reset_reset_n                     (1'b1),           // reset.reset_n
 		.switch_external_connection_export (SW[1]),           // switch_external_connection.export
 		.led_external_connection_export    (LEDR[1])          // led_external_connection.export
 	);
