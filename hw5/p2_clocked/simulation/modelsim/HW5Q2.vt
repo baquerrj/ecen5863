@@ -1,0 +1,99 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions
+// and other software and tools, and its AMPP partner logic
+// functions, and any output files from any of the foregoing
+// (including device programming or simulation files), and any
+// associated documentation or information are expressly subject
+// to the terms and conditions of the Intel Program License
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other
+// applicable license agreement, including, without limitation,
+// that your use is for the sole purpose of programming logic
+// devices manufactured by Intel and sold by Intel or its
+// authorized distributors.  Please refer to the applicable
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to
+// suit user's needs .Comments are provided in each section to help the user
+// fill out necessary details.
+// *****************************************************************************
+// Generated on "10/12/2019 20:10:26"
+
+// Verilog Test Bench template for design : HW5Q2
+//
+// Simulation tool : ModelSim-Altera (Verilog)
+//
+
+`timescale 1 ps/ 1 ps
+module HW5Q2_tb();
+// test vector input registers
+reg [31:0] A;
+reg [31:0] B;
+reg [4:0] Op;
+reg clk;
+// wires
+wire [31:0]  Y;
+
+integer iteration = 0;
+
+HW5Q2 uut (
+// port map - connection between master ports and signals/registers
+	.A(A),
+	.B(B),
+	.Op(Op),
+	.Y(Y),
+	.clk(clk)
+);
+
+initial begin
+	$display("TESTBENCH INITIALZIED");
+	A 		<= 32'h0;
+	B		<= 32'h0;
+	Op		<= 5'h0;
+	clk 	<= 1'b0;
+	$monitor("A=%h B=%h Op=%b Y=%h", A, B, Op, Y);
+end
+
+always begin
+	#5 clk <= ~clk;
+end
+
+// control loop
+always @ (iteration) begin
+	if ( iteration == 0 ) begin
+		A 	<= 32'h5;
+		B	<= 32'h4;
+	end
+	else if ( iteration == 1 ) begin
+		A <= 32'h6;
+	end
+	else if ( iteration == 2 ) begin
+		B <= 32'hF4;
+	end
+	else if ( iteration == 3 ) begin
+		A <= 32'h010;
+	end
+	else begin
+		A <= A + 1;
+	end
+end
+
+
+// main
+always @ (posedge clk) begin
+	iteration <= iteration + 1;
+	if( Op == 5'b11111 ) begin
+		Op <= 5'b00000;
+	end else begin
+		Op <= Op + 1;
+	end
+	if ( iteration == 32 ) begin
+		$finish;
+	end
+end
+
+
+
+endmodule
+

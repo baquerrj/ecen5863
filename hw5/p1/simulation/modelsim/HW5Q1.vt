@@ -1,0 +1,139 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions
+// and other software and tools, and its AMPP partner logic
+// functions, and any output files from any of the foregoing
+// (including device programming or simulation files), and any
+// associated documentation or information are expressly subject
+// to the terms and conditions of the Intel Program License
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other
+// applicable license agreement, including, without limitation,
+// that your use is for the sole purpose of programming logic
+// devices manufactured by Intel and sold by Intel or its
+// authorized distributors.  Please refer to the applicable
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to
+// suit user's needs .Comments are provided in each section to help the user
+// fill out necessary details.
+// *****************************************************************************
+// Generated on "10/11/2019 17:31:21"
+
+// Verilog Test Bench template for design : HW5Q1
+//
+// Simulation tool : ModelSim-Altera (Verilog)
+//
+
+`timescale 1 ps/ 1 ps
+module HW5Q1_tb();
+// test vector input registers
+reg [8:0] DataIn;
+reg RdPtrClr;
+reg WrPtrClr;
+reg clk;
+reg rden;
+reg rdinc;
+reg wden;
+reg wrinc;
+// wires
+wire [8:0]  DataOut;
+
+integer iteration = 0;
+
+integer count = 0;
+
+// assign statements (if any)
+HW5Q1 uut (
+// port map - connection between master ports and signals/registers
+	.DataIn(DataIn),
+	.DataOut(DataOut),
+	.RdPtrClr(RdPtrClr),
+	.WrPtrClr(WrPtrClr),
+	.clk(clk),
+	.rden(rden),
+	.rdinc(rdinc),
+	.wden(wden),
+	.wrinc(wrinc)
+);
+
+initial begin
+	DataIn <= 9'b000000000;
+	RdPtrClr <= 1'b0;
+	WrPtrClr <= 1'b0;
+	rden <= 1'b0;
+	clk <= 1'b0;
+	rdinc <= 1'b0;
+	wden <= 1'b0;
+	wrinc <= 1'b0;
+	$display("TESTBENCH INITIALIZED");
+end
+
+always begin
+	#5 clk <= ~clk;
+end
+
+
+always @ (posedge RdPtrClr) begin
+	repeat (1) begin
+		@ (posedge clk);
+	end
+	RdPtrClr <= ~RdPtrClr;
+end
+
+always @ (posedge WrPtrClr) begin
+	repeat (1) begin
+		@ (posedge clk);
+	end
+	WrPtrClr <= ~WrPtrClr;
+end
+
+always @ (count) begin
+	if ( count == 8 ) begin
+		count <= 0;
+		if ( wden == 1'b1 ) begin
+			wden	<= 1'b0;
+			wrinc <= 1'b0;
+			rden 	<= 1'b1;
+			rdinc <= 1'b1;
+		end
+		else if ( rden == 1'b1 ) begin
+			wden	<= 1'b1;
+			wrinc <= 1'b1;
+			rden 	<= 1'b0;
+			rdinc <= 1'b0;
+		end
+		else begin
+			wden	<= 1'b1;
+			wrinc <= 1'b1;
+		end
+	end
+end
+
+// control loop
+always @ (iteration) begin
+   if (iteration == 1) begin
+		RdPtrClr <= 1'b1;
+		WrPtrClr <= 1'b1;
+   end
+   else if (iteration == 2) begin
+		RdPtrClr <= 1'b0;
+		WrPtrClr <= 1'b0;
+	end
+	else if (iteration > 2) begin
+		DataIn <= iteration;
+		count	 <= count + 1;
+	end
+end
+
+// main
+always @ (posedge clk) begin
+   iteration <= iteration + 1;
+   if ( iteration == 50 ) begin
+      $display("Terminating simulation");
+      $finish;
+   end
+end
+
+endmodule
+
