@@ -83,63 +83,23 @@
 #include "altera_avalon_pio_regs.h"
 #include "system.h"
 
-void displayMyName( int datain )
+void displayMyName( void )
 {
-	static int displayed = 0;
-	switch (datain)
-	{
-		case 1:
-		{
-			if ( displayed == 0 )
-			{
-				alt_putstr("Roberto Baquerizo\n");
-				displayed = 1;
-			}
-			break;
-		}
-		case 0:
-			if ( displayed == 1 )
-			{
-				displayed = 0;
-			}
-			break;
-		default:
-			break;
-	}
+      alt_putstr( "Roberto Baquerizo\n" );
+
 }
 
-void displayPartners( int datain )
+void displayPartners( void )
 {
-	static int displayed = 0;
-	switch (datain)
-	{
-		case 1:
-		{
-			if ( displayed == 0 )
-			{
-				alt_putstr("Todor Arsenov\n");
-				alt_putstr("Bijan Kianian\n");
-				displayed = 1;
-			}
-			break;
-		}
-		case 0:
-			if ( displayed == 1 )
-			{
-				displayed = 0;
-			}
-			break;
-		default:
-			break;
-	}
+	   alt_putstr("Todor Arsenov\n");
+		alt_putstr("Bijan Kianian\n");
 }
 
 int main()
 {
-	int display_me     = 0;
 	int switch_datain1 = 0;
-	int switch_datain2 = 0;
-
+	//int switch_datain2 = 0;
+   int displayed = 0;
 	alt_putstr("Hello from Nios II!\n");
     /* Event loop never exits. Read the PB, display on the LED */
 	while (1)
@@ -147,17 +107,40 @@ int main()
 		switch_datain1 = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE);
 		IOWR_ALTERA_AVALON_PIO_DATA(LED_BASE, switch_datain1);
 
-		switch_datain2 = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE - 16);
+		//switch_datain2 = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE + 1);
+      //IOWR_ALTERA_AVALON_PIO_DATA(LED_BASE, switch_datain2);
 
-		if ( display_me == 1 )
+		switch ( switch_datain1 )
 		{
-			// displayMyName( switch_datain2 );
-		}
-		else
-		{
-			displayPartners( switch_datain1 );
+		   case 2:
+		   {
+		      if( 0 == displayed )
+		      {
+		         displayPartners();
+		         displayed = 1;
+		      }
+		      else
+		      {
+		         displayed = 0;
+		      }
+		      break;
+		   }
+		   case 1:
+		   {
+            if( 0 == displayed )
+            {
+               displayMyName();
+               displayed = 1;
+            }
+            else
+            {
+               displayed = 0;
+            }
+		      break;
+		   }
+		   default:
+		      break;
 		}
 	}
-
 	return 0;
 }

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2e' in SOPC Builder design 'nios_setup_v2'
  * SOPC Builder design path: ../../nios_setup_v2.sopcinfo
  *
- * Generated: Sun Oct 06 17:43:30 MDT 2019
+ * Generated: Thu Oct 10 12:35:13 MDT 2019
  */
 
 /*
@@ -196,7 +196,7 @@
 #define LED_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_CAPTURE 0
-#define LED_DATA_WIDTH 1
+#define LED_DATA_WIDTH 2
 #define LED_DO_TEST_BENCH_WIRING 0
 #define LED_DRIVEN_SIM_VALUE 0
 #define LED_EDGE_TYPE "NONE"
@@ -252,7 +252,7 @@
 #define SWITCH_BIT_CLEARING_EDGE_REGISTER 0
 #define SWITCH_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SWITCH_CAPTURE 0
-#define SWITCH_DATA_WIDTH 1
+#define SWITCH_DATA_WIDTH 2
 #define SWITCH_DO_TEST_BENCH_WIRING 0
 #define SWITCH_DRIVEN_SIM_VALUE 0
 #define SWITCH_EDGE_TYPE "NONE"
