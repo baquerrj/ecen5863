@@ -6,11 +6,11 @@
 **/testbench
 **/timing
 **/output_files
-#**/modelsim
+**/.qsys_edit
 **/gate_work
 **/rtl_work
 **/work
-
+**/devplatforms
 !*.vht
 !*.vt
 !*.vho
@@ -31,11 +31,11 @@
 *.xrf
 *.do
 *.sft
-#*.vho
 *.opt
 *.wlf
 *_generation_script*
 *_inst.vhd
+*_inst.v
 *.bak
 *.bak[0-9]
 *.cmp
@@ -54,15 +54,17 @@
 *.qws
 *.rpt
 *.smsg
-#*.sof
 *.sopc_builder
 *.summary
 *.tcl
-*.txt # Explicitly add any text files used
 *~
 *example*
 *sopc_*
-PLLJ_PLLSPE_INFO.txt # The generated PLL specification file
+
+# Manually add any txt files
+*.txt
+# The generated PLL specification file
+PLLJ_PLLSPE_INFO.txt
 
 # ignore vunit files
 **/vunit_out

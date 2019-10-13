@@ -4,10 +4,10 @@
 
 `timescale 1 ps / 1 ps
 module nios_setup_v2 (
-		input  wire  clk_clk,                           //                        clk.clk
-		output wire  led_external_connection_export,    //    led_external_connection.export
-		input  wire  reset_reset_n,                     //                      reset.reset_n
-		input  wire  switch_external_connection_export  // switch_external_connection.export
+		input  wire       clk_clk,                           //                        clk.clk
+		output wire [1:0] led_external_connection_export,    //    led_external_connection.export
+		input  wire       reset_reset_n,                     //                      reset.reset_n
+		input  wire [1:0] switch_external_connection_export  // switch_external_connection.export
 	);
 
 	wire  [31:0] nios2e_data_master_readdata;                          // mm_interconnect_0:nios2e_data_master_readdata -> nios2e:d_readdata

@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Oct 6, 2019 5:43:29 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1570405409803</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Oct 10, 2019 12:35:12 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1570732512731</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\AlteraPrj\devkit_hello_world\software\hello_world_sw_bsp</BspGeneratedLocation>
-        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\nios_setup_v2.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2e</Cpu>
