@@ -1,0 +1,17 @@
+/*
+ * accelerometer.c
+ *
+ *  Created on: Oct 8, 2019
+ *      Author: bjk
+ */
+
+#include <string.h>
+#include "sys/alt_stdio.h"
+#include "alt_types.h"
+
+// these includes allow us to perform a quick sanity check that the system was properly assembled in SOPC Builder
+#include "system.h"
+#include "inc/system_validation.h"
+#include "altera_avalon_spi.h"
+// all helper routine includes are condensed into this one file for neatness
+#include "inc/main_includes.h"

@@ -1,0 +1,9 @@
+/*
+ * accelerometer.c
+ *
+ *  Created on: Oct 8, 2019
+ *      Author: bjk
+ */
+
+#include "altera_avalon_spi.h"
+

@@ -1,0 +1,17 @@
+/*
+ * accelerometer.c
+ *
+ *  Created on: Oct 8, 2019
+ *      Author: bjk
+ */
+
+#include "altera_avalon_spi.h"
+
+alt_u32 base = 0x09409200;
+
+int alt_avalon_spi_command(alt_u32 base, alt_u32 slave,
+alt_u32 write_length,
+const alt_u8* wdata,
+alt_u32 read_length,
+alt_u8* read_data,
+alt_u32 flags);
