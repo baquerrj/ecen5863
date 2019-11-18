@@ -32,16 +32,17 @@
 
 
 
- module HW4P2 (P, CP, SR, PE, CEP, CET, Q, TC);
+ module HW4P2 (
    // Define input && output
-   input [3:0] P;    // Parallel Input
-   input CP;         // Clock
-   input SR;         // Active Low Synchronous Reset
-   input PE;         // Count Enable Parallel Input
-   input CEP;        // Count Enable Parallel
-   input CET;        // Count Enable Trickle
-   output reg [3:0]Q = 4'h0;     // Parallel Output
-   output wire TC;     // Terminal Count
+   input wire [3:0]	P,    		// Parallel Input
+   input wire 			CP,         // Clock
+   input wire 			SR,         // Active Low Synchronous Reset
+   input wire 			PE,         // Count Enable Parallel Input
+   input wire 			CEP,        // Count Enable Parallel
+   input wire 			CET,        // Count Enable Trickle
+   output reg [3:0]	Q = 4'h0,   // Parallel Output
+   output wire 		TC			   // Terminal Count
+	);
 
    wire CE;       // Count Enable condition
    integer i = 0; // loop variable

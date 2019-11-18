@@ -1,0 +1,116 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Intel and sold by Intel or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "10/20/2019 21:18:08"
+                                                                                
+// Verilog Test Bench template for design : HW6P2
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ns
+module HW6P2_tb();
+// test vector input registers
+reg A;
+reg B;
+reg C;
+reg CONT;
+reg D;
+reg MACK;
+reg PBGNT;
+reg clock;
+reg reset;
+// wires                                               
+wire CE;
+wire CLD;
+wire CMREQ;
+wire CNTLD;
+wire PBREQ;
+
+integer currentState;
+integer expectedState;
+
+// assign statements (if any)                          
+HW6P2 uut (
+// port map - connection between master ports and signals/registers   
+	.A(A),
+	.B(B),
+	.C(C),
+	.CE(CE),
+	.CLD(CLD),
+	.CMREQ(CMREQ),
+	.CNTLD(CNTLD),
+	.CONT(CONT),
+	.D(D),
+	.MACK(MACK),
+	.PBGNT(PBGNT),
+	.PBREQ(PBREQ),
+	.clock(clock),
+	.reset(reset)
+);
+
+initial
+begin
+	A 		= 1'b0;
+	B 		= 1'b0;
+	C 		= 1'b0;
+	D 		= 1'b0;
+	CONT 	= 1'b0;
+	MACK	= 1'b0;
+	PBGNT = 1'b0;
+	clock = 1'b0;
+
+	reset = 1'b1;
+	#2;
+	// clear reset
+	reset = 1'b0;
+	#2;
+
+	$display("TESTBENCH INITIALIZED");
+	$display("CE\tCLD\tCMREQ\tCNTLD\tPBREQ");
+	$monitor("%b\t%b\t%b\t%b\t%b", CE, CLD, CMREQ, CNTLD, PBREQ);
+end
+                                                
+always
+begin
+	clock <= !clock;
+	#2;
+end
+
+always @ (CE, CLD, CMREQ, CNTLD, PBREQ)
+begin
+
+
+always
+begin
+	// S0 all outputs are 0
+	if( CE | CLD | CMREQ | CNTLD | PBREQ ) begin
+		$display("Outputs incorrect");
+	end
+	// transition to S1
+	A <= 1'b1;
+	#5;
+	if( ~(PBREQ) ) begin
+		$display("Incorrect transition to S1");
+	end
+	$finish;                                
+end                                                    
+endmodule
+

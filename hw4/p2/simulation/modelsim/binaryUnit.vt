@@ -1,0 +1,172 @@
+// Copyright (C) 2016  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions
+// and other software and tools, and its AMPP partner logic
+// functions, and any output files from any of the foregoing
+// (including device programming or simulation files), and any
+// associated documentation or information are expressly subject
+// to the terms and conditions of the Intel Program License
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other
+// applicable license agreement, including, without limitation,
+// that your use is for the sole purpose of programming logic
+// devices manufactured by Intel and sold by Intel or its
+// authorized distributors.  Please refer to the applicable
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to
+// suit user's needs .Comments are provided in each section to help the user
+// fill out necessary details.
+// *****************************************************************************
+// Generated on "10/03/2019 12:30:21"
+
+// Verilog Test Bench template for design : HW4P2
+//
+// Simulation tool : ModelSim-Altera (Verilog)
+//
+
+`timescale 1 ps/ 1 ps
+module HW4P2_tb();
+// test vector input registers
+reg CEP;
+reg CET;
+reg CP;
+reg [3:0] P;
+reg PE;
+reg SR;
+// wires
+wire [3:0]  Q;
+wire TC;
+
+integer iteration = 0;
+reg [3:0] hold = 4'h0;  // hold value to check against
+wire CE;  // counter enable condition
+wire CH;  // counter hold condition
+
+// assign statements (if any)
+assign CE = CEP && CET && PE;
+assign CH = ~CE;
+
+binaryUnit uut (
+// port map - connection between master ports and signals/registers
+   .CEP(CEP),
+   .CET(CET),
+   .CP(CP),
+   .P(P),
+   .PE(PE),
+   .Q(Q),
+   .SR(SR),
+   .TC(TC)
+);
+
+
+initial begin
+   $display("Initializing Testbench for HW4P2 Binary Counter");
+   CEP <= 1'b0;
+   CET <= 1'b0;
+   CP  <= 1'b0;
+   P   <= 4'h0;
+   PE  <= 1'b1; // active low, so initializing it to 1 to prevent stuff from happening
+   SR  <= 1'b1; // active low, so initializing it to 1 to prevent stuff from happening
+end
+
+// generate clock
+always begin
+   #5 CP <= ~CP;
+end
+
+always @ (iteration) begin
+   if (iteration == 1)
+   begin
+      CET <= 1'b1;
+      CEP <= 1'b1;
+   end
+   else if (iteration == 5)
+   begin
+      SR <= 1'b0;  // counter to reset to 0
+   end
+   else if (iteration == 10)
+   begin
+      SR <= 1'b1;  // counter should resume incrementing
+   end
+   else if (iteration == 30)
+   begin
+      CET <= 1'b0;
+      CEP <= 1'b0; // counter should hold its value
+      hold <= Q;
+   end
+   else if (iteration == 35)
+   begin
+      PE   <= 1'b0;
+      P    <= 4'b1010;  // load 1010 into counter but do not increment
+      hold <= 4'b1010;
+   end
+   else if (iteration == 40)
+   begin
+      PE  <= 1'b1;
+      CET <= 1'b1;
+      CEP <= 1'b1; // start incrementing from 1010
+   end
+   else if (iteration == 60)
+   begin
+      PE   <= 1'b0;
+      P    <= 4'b0110;  // load 0110 into counter but do not increment
+      hold <= 4'b0110;
+   end
+   else if (iteration == 61)
+   begin
+      PE <= 1'b1;
+   end
+	else if (iteration == 70)
+	begin
+		PE   <= 1'b0;
+		P	  <= 4'b1110;
+		hold <= 4'b1110;
+	end
+	else if (iteration == 75)
+	begin
+		PE <= 1'b1;
+	end
+   else if (iteration == 85)
+   begin
+      SR <= 1'b0;
+   end
+   else if (iteration == 86)
+   begin
+      SR <= 1'b1;
+   end
+end
+
+// check counter holds value
+always @ (posedge CH) begin
+	repeat (2) begin
+		@ (posedge CP);
+	end
+	if (hold != Q)
+	begin
+		$display("Iteration: %d\tHold Unsuccessful: %b != %b", iteration, hold, Q);
+	end
+end
+
+// check reset
+always @ (negedge SR) begin
+	repeat (2) begin
+		@ (posedge CP);
+	end
+	if (Q != 4'h0)
+	begin
+   	$display("Iteration: %d\tReset Unsuccessful: Q = %b", iteration, Q);
+   end
+end
+
+// main
+always @ (posedge CP) begin
+   iteration <= iteration + 1;
+   if ( iteration == 100 )
+   begin
+      $display("Terminating simulation");
+      $finish;
+   end
+end
+
+endmodule

@@ -1,0 +1,172 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/intelFPGA_lite/16.1
+Ecycloneoneportram
+Z1 w1570290350
+Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z3 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 K`kJb<]?z4U5EbkG_:lMO3
+Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z7 DPx10 cycloneive 21 cycloneive_components 0 22 HFZ8mBI5?[8TM9e2YGWCa2
+R0
+Z8 8C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vho
+Z9 FC:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vho
+l0
+L78
+VI3QWXQGQhoHHHgl@T4^]Z2
+!s100 ?ZaRLA?GjGoGPlao_3O9:2
+Z10 OV;C;10.5b;63
+33
+Z11 !s110 1570290749
+!i10b 1
+Z12 !s108 1570290749.000000
+Z13 !s90 -reportprogress|300|-work|work|C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vho|
+Z14 !s107 C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vho|
+!i113 1
+Z15 o-work work
+Z16 tExplicit 1 NoCoverage 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+Z17 DEx4 work 17 cycloneoneportram 0 22 I3QWXQGQhoHHHgl@T4^]Z2
+l170
+L116
+ViaehIB>Zo0QEkJfBCA9Ln0
+!s100 7Y2EQlMjkSfD2HNmzHd2?1
+R10
+33
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R15
+R16
+Asyn
+Z18 DPx9 altera_mf 20 altera_mf_components 0 22 m2K6F5NmQKkFhQa^^]15g3
+R5
+R6
+Z19 DEx4 work 17 cycloneoneportram 0 22 MYng;1R]AEcfhn<BZAL0d0
+l59
+L55
+VN>e>2eJL7_d^0caDH8Yk41
+!s100 ]1ZW3@hVzhNG=lfU>Jn1L3
+R10
+33
+Z20 !s110 1570290735
+!i10b 1
+Z21 !s108 1570290735.000000
+!s90 -reportprogress|300|-work|work|C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vho|C:/AlteraPrj/hw4/p3/cycloneOnePortRam.vhd|
+!s107 C:/AlteraPrj/hw4/p3/cycloneOnePortRam.vhd|C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vho|
+!i113 1
+R15
+R16
+FC:/AlteraPrj/hw4/p3/cycloneOnePortRam.vhd
+w1570244963
+8C:/AlteraPrj/hw4/p3/cycloneOnePortRam.vhd
+Ecycloneoneportram_tb
+Z22 w1570254360
+Z23 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R5
+R6
+R0
+Z24 8C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vht
+Z25 FC:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vht
+l0
+L32
+VC5C7EX3^cjP0oa4UcJj0>2
+!s100 OU_ASojGD3FMz=e_NIK=>1
+R10
+33
+Z26 !s110 1570290763
+!i10b 1
+Z27 !s108 1570290763.000000
+Z28 !s90 -reportprogress|300|-work|work|C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vht|
+Z29 !s107 C:/AlteraPrj/hw4/p3/simulation/modelsim/cycloneOnePortRam.vht|
+!i113 1
+R15
+R16
+Acycloneoneportram_arch_tb
+R2
+R3
+R4
+R7
+R17
+R23
+R5
+R6
+Z30 DEx4 work 20 cycloneoneportram_tb 0 22 C5C7EX3^cjP0oa4UcJj0>2
+l51
+L34
+Z31 V:1H=ZPS=cF58TW^RMIJ3_2
+Z32 !s100 BQm0kNG@c^U7TS9e5WXMW3
+R10
+33
+R26
+!i10b 1
+R27
+R28
+R29
+!i113 1
+R15
+R16
+Ehard_block
+R1
+R2
+R3
+R4
+R5
+R6
+R7
+R0
+R8
+R9
+l0
+L35
+VG>oHZGo79<QY<Jf^;>G]N2
+!s100 >mXi5[`cD`bFC`UBKA<om3
+R10
+33
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R15
+R16
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+DEx4 work 10 hard_block 0 22 G>oHZGo79<QY<Jf^;>G]N2
+l65
+L51
+Vd2mkhaaJ3IEL?IPz<JY_I2
+!s100 [5;Wd8QGQ>@2NGoJ1I]Y43
+R10
+33
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R15
+R16
